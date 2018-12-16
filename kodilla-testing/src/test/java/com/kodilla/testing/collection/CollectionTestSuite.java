@@ -61,10 +61,11 @@ public class CollectionTestSuite {
         System.out.println("testing case normal list");
 
         //Then
-        for (Integer i: evenList) {
-            boolean isEven = i % 2 == 0;
-            Assert.assertTrue(isEven);
-        }
+        ArrayList<Integer> expectedNumbersList = new ArrayList<>();
+        expectedNumbersList.add(234);
+        expectedNumbersList.add(456);
+        expectedNumbersList.add(678);
 
+        Assert.assertEquals(evenList, expectedNumbersList);
     }
 }
