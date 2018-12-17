@@ -15,6 +15,7 @@ public class WeatherForecastTestSuite {
     public void testCalculateForecastWithMock() {
         //Given
         Temperatures temperaturesMock = mock(Temperatures.class);
+
         HashMap<Integer, Double> temperaturesMap = new HashMap<>();
         temperaturesMap.put(0, 25.5);
         temperaturesMap.put(1, 26.2);

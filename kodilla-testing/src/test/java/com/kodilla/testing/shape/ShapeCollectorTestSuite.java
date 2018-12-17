@@ -85,7 +85,6 @@ public class ShapeCollectorTestSuite {
         Shape expectCircle = shapeCollector.getFigure(0);
         Shape expectSquare = shapeCollector.getFigure(1);
         Shape expectTriangle = shapeCollector.getFigure(2);
-
         //Then
         Assert.assertEquals(circle, expectCircle);
         Assert.assertEquals(square, expectSquare);
