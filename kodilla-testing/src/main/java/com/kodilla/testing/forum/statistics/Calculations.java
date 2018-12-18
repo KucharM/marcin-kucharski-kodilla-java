@@ -6,29 +6,74 @@ public class Calculations {
     private int numberOfUsers;
     private int numberOfPosts;
     private int numberOfComments;
-    private double averagePostsNumberPerUser;
-    private double averageCommentsNumberPerUser;
-    private double averageCommentsNumberPerPost;
+    private int averagePostsNumberPerUser;
+    private int averageCommentsNumberPerUser;
+    private int averageCommentsNumberPerPost;
 
     public Calculations(Statistics statistics) {
         this.statistics = statistics;
     }
 
     public void calculateAdvStatistics(Statistics statistics) {
-        numberOfUsers = statistics.usersNames().size();
-        numberOfPosts = statistics.postsCount();
-        numberOfComments = statistics.commentsCount();
-        averagePostsNumberPerUser = (double)statistics.postsCount() / statistics.usersNames().size();
-        averageCommentsNumberPerUser = (double)statistics.commentsCount() / statistics.usersNames().size();
-        averageCommentsNumberPerPost = (double)statistics.commentsCount() / statistics.postsCount();
+        this.numberOfUsers = statistics.usersNames().size();
+        this.numberOfPosts = statistics.postsCount();
+        this.numberOfComments = statistics.commentsCount();
+        this.averagePostsNumberPerUser = calculateAvgPostNumberPerUser();
+        this.averageCommentsNumberPerUser = calculateAvgCommentsNumberPerUser();
+        this.averageCommentsNumberPerPost = calculateAvgCommentsPerPost();
+    }
+
+    private int calculateAvgPostNumberPerUser() {
+        if (statistics.usersNames().size() > 0)
+            return statistics.postsCount() / statistics.usersNames().size();
+        else
+            return 0;
+    }
+
+    private int calculateAvgCommentsNumberPerUser() {
+        if (statistics.usersNames().size() > 0)
+            return statistics.commentsCount() / statistics.usersNames().size();
+        else
+            return 0;
+    }
+
+    private int calculateAvgCommentsPerPost() {
+        if (statistics.postsCount() > 0)
+            return statistics.commentsCount() / statistics.postsCount();
+        else
+            return 0;
+    }
+
+    public int getNumberOfUsers() {
+        return numberOfUsers;
+    }
+
+    public int getNumberOfPosts() {
+        return numberOfPosts;
+    }
+
+    public int getNumberOfComments() {
+        return numberOfComments;
+    }
+
+    public int getAveragePostsNumberPerUser() {
+        return averagePostsNumberPerUser;
+    }
+
+    public int getAverageCommentsNumberPerUser() {
+        return averageCommentsNumberPerUser;
+    }
+
+    public int getAverageCommentsNumberPerPost() {
+        return averageCommentsNumberPerPost;
     }
 
     public String showStatistics() {
-        return "Number of users: " + numberOfUsers +
-                "\nNumber of posts: " + numberOfPosts +
-                "\nNumber of comments: " +numberOfComments +
-                "\nAverage number posts per user: " + averagePostsNumberPerUser +
-                "\nAverage number comments per user: " + averageCommentsNumberPerUser +
-                "\nAverage number comments per post: " + averageCommentsNumberPerPost;
+        return "Number of users: " + this.numberOfUsers +
+                "\nNumber of posts: " + this.numberOfPosts +
+                "\nNumber of comments: " + this.numberOfComments +
+                "\nAverage number posts per user: " + this.averagePostsNumberPerUser +
+                "\nAverage number comments per user: " + this.averageCommentsNumberPerUser +
+                "\nAverage number comments per post: " + this.averageCommentsNumberPerPost;
     }
 }
