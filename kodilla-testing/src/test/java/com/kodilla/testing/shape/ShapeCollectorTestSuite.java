@@ -85,10 +85,15 @@ public class ShapeCollectorTestSuite {
         Shape expectCircle = shapeCollector.getFigure(0);
         Shape expectSquare = shapeCollector.getFigure(1);
         Shape expectTriangle = shapeCollector.getFigure(2);
+        Shape tooBigIndex = shapeCollector.getFigure(3);
+        Shape minusIndex = shapeCollector.getFigure(-1);
+
         //Then
         Assert.assertEquals(circle, expectCircle);
         Assert.assertEquals(square, expectSquare);
-        Assert.assertEquals(triangle, expectTriangle);
+        Assert.assertEquals(expectTriangle, triangle);
+        Assert.assertNull(tooBigIndex);
+        Assert.assertNull(minusIndex);
     }
 
     @Test

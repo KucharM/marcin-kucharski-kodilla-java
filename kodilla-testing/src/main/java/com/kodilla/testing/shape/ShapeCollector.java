@@ -20,10 +20,12 @@ class ShapeCollector {
     }
 
     public Shape getFigure(int n) {
-        Shape shape = shapeList.get(n);
-        if (n < 0 || n >= shapeList.size())
-            return shape;
-        else return null;
+
+        if (n < 0 || n >= shapeList.size()) {
+            return null;
+        } else {
+            return shapeList.get(n);
+        }
     }
 
     public ArrayList<Shape> showFigures() {
