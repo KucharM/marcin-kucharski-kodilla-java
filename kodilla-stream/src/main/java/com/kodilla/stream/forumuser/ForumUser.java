@@ -3,6 +3,10 @@ package com.kodilla.stream.forumuser;
 import java.time.LocalDate;
 
 public final class ForumUser {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0c0da7baad286d90cad7106767461a6a3dad4abe
     private final int userID;
     private final String userName;
     private final char sex;
