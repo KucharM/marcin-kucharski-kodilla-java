@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Forum {
-<<<<<<< HEAD
-=======
 
->>>>>>> 0c0da7baad286d90cad7106767461a6a3dad4abe
     private final List<ForumUser> forumUserList = new ArrayList<>();
 
     public Forum() {

@@ -3,10 +3,7 @@ package com.kodilla.stream.forumuser;
 import java.time.LocalDate;
 
 public final class ForumUser {
-<<<<<<< HEAD
-=======
 
->>>>>>> 0c0da7baad286d90cad7106767461a6a3dad4abe
     private final int userID;
     private final String userName;
     private final char sex;
@@ -41,6 +38,12 @@ public final class ForumUser {
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
+    }
+
+    public int getAge() {
+        int currentYear = LocalDate.now().getYear();
+        int yearOfBirth = dateOfBirth.getYear();
+        return currentYear - yearOfBirth;
     }
 
     @Override
