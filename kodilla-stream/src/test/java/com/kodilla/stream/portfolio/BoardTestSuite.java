@@ -4,8 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
+import java.util.function.Function;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -135,5 +140,34 @@ public class BoardTestSuite {
 
         //Then
         Assert.assertEquals(2, longTasks);
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+
+        List<Integer> days = project.getTaskLists().stream()
+                .filter(t -> t.getName().equals("In progress"))
+                //.filter(inProgressTasks::contains)
+                .flatMap(t -> t.getTasks().stream())
+                .map(t -> t.getCreated().until(LocalDate.now()))
+                .map(Period::getDays)
+                .collect(toList());
+        //.map(t -> t.getCreated())
+        //.count();
+
+        double average = IntStream.range(0, days.size())
+                .map(n -> days.get(n))
+                .average()
+                .getAsDouble();
+
+        //Then
+        Assert.assertEquals(3, days.size());
+        Assert.assertEquals(10.0, average, 0.0);
     }
 }
