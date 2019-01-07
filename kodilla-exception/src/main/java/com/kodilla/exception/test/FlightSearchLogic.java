@@ -14,7 +14,7 @@ public class FlightSearchLogic {
         flightMap.put("Radom", true);
         flightMap.put("Wroclaw", true);
 
-        if (flightMap.keySet().contains(flight.getArrivalAirport()) &&
+        if (flightMap.containsKey(flight.getArrivalAirport()) &&
                 flightMap.get(flight.getArrivalAirport()))
             System.out.println("Route found");
         else
