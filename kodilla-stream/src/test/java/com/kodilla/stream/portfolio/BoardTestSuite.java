@@ -119,7 +119,7 @@ public class BoardTestSuite {
                 .collect(toList());
 
         //Then
-        Assert.assertEquals(1, tasks.size());
+        Assert.assertEquals(0, tasks.size());
         Assert.assertEquals("HQLs for analysis", tasks.get(0).getTitle());
     }
 
@@ -139,7 +139,7 @@ public class BoardTestSuite {
                 .count();
 
         //Then
-        Assert.assertEquals(2, longTasks);
+        Assert.assertEquals(1, longTasks);
     }
 
     @Test
