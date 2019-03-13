@@ -17,36 +17,22 @@ import java.util.List;
 @SpringBootTest
 public class InvoiceDaoTestSuite {
     @Autowired
-    ProductDao productDao;
-    @Autowired
-    ItemDao itemDao;
-    @Autowired
     InvoiceDao invoiceDao;
 
     @Test
     public void testInvoiceDaoSave() {
         //Given
         Product milk = new Product("milk");
-        productDao.save(milk);
         Product bread = new Product("bread");
-        productDao.save(bread);
         Product chocolate = new Product("chocolate");
-        productDao.save(chocolate);
         Product beer = new Product("beer");
-        productDao.save(beer);
         Product cheese = new Product("cheese");
-        productDao.save(cheese);
 
         Item item1 = new Item(milk, new BigDecimal(3), 10, new BigDecimal(5));
-        itemDao.save(item1);
         Item item2 = new Item(bread, new BigDecimal(4), 5, new BigDecimal(5));
-        itemDao.save(item2);
         Item item3 = new Item(cheese, new BigDecimal(8), 6, new BigDecimal(5));
-        itemDao.save(item3);
         Item item4 = new Item(chocolate, new BigDecimal(6), 10, new BigDecimal(5));
-        itemDao.save(item4);
         Item item5 = new Item(beer, new BigDecimal(5), 20, new BigDecimal(5));
-        itemDao.save(item5);
 
         Invoice invoice = new Invoice("12345");
         invoice.getItems().add(item1);
@@ -75,6 +61,5 @@ public class InvoiceDaoTestSuite {
 
         //CleanUp
         invoiceDao.deleteById(invoiceId);
-
     }
 }
