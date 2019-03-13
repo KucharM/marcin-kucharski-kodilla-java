@@ -15,13 +15,13 @@ public class TaskList {
     private String description;
     private List<Task> tasks = new ArrayList<>();
 
+    public TaskList() {
+
+    }
+
     public TaskList(String listName, String description) {
         this.listName = listName;
         this.description = description;
-    }
-
-    public TaskList() {
-
     }
 
     @Id
@@ -55,14 +55,14 @@ public class TaskList {
     }
 
     @OneToMany(targetEntity = Task.class,
-            mappedBy = "tasksList",
-            fetch = FetchType.EAGER,
+            mappedBy = "taskList",
+            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     public List<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks) {
+    private void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 }
