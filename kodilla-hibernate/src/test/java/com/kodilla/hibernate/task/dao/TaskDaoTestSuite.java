@@ -30,7 +30,7 @@ public class TaskDaoTestSuite {
 
         //Then
         int id = task.getId();
-        Optional readTask = taskDao.findById(id);
+        Optional<Task> readTask = taskDao.findById(id);
         Assert.assertTrue(readTask.isPresent());
 
         //Clean up
